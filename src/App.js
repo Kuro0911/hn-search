@@ -1,10 +1,12 @@
-import logo from "./logo.svg";
+import React from "react";
 import "./App.css";
+import Searchbox from "./Searchbox";
 
 function App() {
   return (
     <div className="App">
-      <h1>hello world</h1>
+      <h1>HACKER NEWS SEARCH</h1>
+      <Searchbox />
     </div>
   );
 }
