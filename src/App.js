@@ -8,14 +8,30 @@ function App() {
   return (
     <div className="App">
       <h1>HACKER NEWS SEARCH</h1>
-      <Searchbox />
       <Router>
         <Routes>
           <Route
             path="/news/:objId"
             element={
               <>
-                <News fetchUrl={"12701272"} />
+                <Searchbox isResult />
+                <News />
+              </>
+            }
+          />
+          <Route
+            path="/news"
+            element={
+              <>
+                <Searchbox />
+              </>
+            }
+          />
+          <Route
+            path="/"
+            element={
+              <>
+                <Searchbox />
               </>
             }
           />
