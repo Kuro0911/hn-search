@@ -1,15 +1,16 @@
 import React, { useState } from "react";
-import { Link, Navigate, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import axios from "./axios";
 import "./Searchbox.css";
 function Searchbox({ isResult }) {
   const [input, setInput] = useState("");
   const [foundNews, setFoundNews] = useState([]);
-  const navigate = useNavigate();
   const showSearch = (e) => {
     e.preventDefault();
     async function fetchData() {
-      const request = await axios.get("search?query=" + input);
+      const request = await axios.get(
+        "search?query=" + input + "&hitsPerPage=50"
+      );
       setFoundNews(request.data.hits);
       return request;
     }
@@ -18,7 +19,8 @@ function Searchbox({ isResult }) {
   };
   if (!isResult) {
     return (
-      <div>
+      <div className="search-box">
+        <h1>HACKER NEWS SEARCH</h1>
         <div className="search">
           <div className="search-cont">
             <form>

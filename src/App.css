@@ -1,5 +1,7 @@
 .App {
-  background-color: w hite;
+  background-color: white;
+  height: 100vh;
+  width: 100vw;
   display: grid;
   place-items: center;
 }
