@@ -1,6 +1,10 @@
 .search-box {
   text-align: center;
 }
+.search-box > h1 {
+  cursor: pointer;
+  font-family: "Times New Roman", Times, serif;
+}
 .search {
   display: flex;
   z-index: 3;
@@ -32,7 +36,7 @@
 .search-cont > form > input {
   flex: 1;
   border-radius: 30px;
-  padding: 10px;
+  padding: 15px;
   border: none;
 }
 .search-cont > form > button {
@@ -45,4 +49,28 @@
 .search-res {
   text-align: left;
   margin-left: 50px;
+}
+.back-text {
+  color: black;
+  transition: all ease;
+}
+.back-text:hover {
+  color: blue;
+  cursor: pointer;
+}
+.search-res > h1 {
+  font-size: 28px;
+}
+.search-info {
+  display: block;
+}
+.search-info > h2 {
+  color: grey;
+  text-align: right;
+  font-size: 20px;
+  margin-top: -15px;
+}
+.search-info > text {
+  color: grey;
+  font-size: 20px;
 }

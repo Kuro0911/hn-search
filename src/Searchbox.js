@@ -1,26 +1,33 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import LoadingSpinner from "./Loading";
 import axios from "./axios";
 import "./Searchbox.css";
 function Searchbox({ isResult }) {
+  const [isLoading, setIsLoading] = useState(false);
   const [input, setInput] = useState("");
   const [foundNews, setFoundNews] = useState([]);
   const showSearch = (e) => {
     e.preventDefault();
+    setIsLoading(true);
     async function fetchData() {
       const request = await axios.get(
         "search?query=" + input + "&hitsPerPage=50"
       );
       setFoundNews(request.data.hits);
+      setIsLoading(false);
       return request;
     }
     fetchData();
     setInput("");
   };
+  const goToo = () => {
+    window.open("https://github.com/Kuro0911/hn-search");
+  };
   if (!isResult) {
     return (
       <div className="search-box">
-        <h1>HACKER NEWS SEARCH</h1>
+        <h1 onClick={() => goToo()}>HACKER NEWS SEARCH</h1>
         <div className="search">
           <div className="search-cont">
             <form>
@@ -30,37 +37,45 @@ function Searchbox({ isResult }) {
                 placeholder="search..."
                 type="text"
               />
-              <button onClick={showSearch} type="submit">
+              <button onClick={showSearch} disabled={isLoading} type="submit">
                 send
               </button>
             </form>
           </div>
         </div>
-        {foundNews.map((news) => {
-          return (
-            <div className="search-res">
-              <div className="res-container">
-                <h1>
-                  <Link to={`/news/${news.objectID}`}>
-                    {news.title}
-                    {" points::"} {news.points}
-                  </Link>
-                </h1>
-                <h2>{news.author}</h2>
-              </div>
+        <div>
+          {isLoading ? (
+            <LoadingSpinner />
+          ) : (
+            <div>
+              {foundNews.map((news) => {
+                return (
+                  <div className="search-res">
+                    <h1>
+                      <Link to={`/news/${news.objectID}`}>{news.title}</Link>
+                    </h1>
+                    <div className="search-info">
+                      <text>
+                        {"Points ~  "} {news.points}{" "}
+                      </text>
+                      <h2>{`~${news.author}`}</h2>
+                    </div>
+                  </div>
+                );
+              })}
             </div>
-          );
-        })}
+          )}
+        </div>
       </div>
     );
   } else {
     return (
-      <div>
+      <div className="back-text">
         <div>
           <Link to={"/news"}>
-            <h1>go back</h1>
+            <div className="back-text">Back to search results</div>
           </Link>
-          <div className="off"></div>;
+          <div className="off"></div>
         </div>
       </div>
     );
