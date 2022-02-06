@@ -1,8 +1,11 @@
 .search-box {
   text-align: center;
+  margin-bottom: 10px;
 }
-.search-box > h1 {
+.head {
   cursor: pointer;
+  text-decoration: none;
+  color: black;
   font-family: "Times New Roman", Times, serif;
 }
 .search {
@@ -59,7 +62,7 @@
   cursor: pointer;
 }
 .search-res > h1 {
-  font-size: 28px;
+  font-size: 25px;
 }
 .search-info {
   display: block;

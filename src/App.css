@@ -5,3 +5,13 @@
   display: grid;
   place-items: center;
 }
+.App-cont > text {
+  color: black;
+  cursor: pointer;
+  text-decoration: underline;
+  transition: all ease;
+  margin-left: 20px;
+}
+.App-cont > text:hover {
+  color: blue;
+}

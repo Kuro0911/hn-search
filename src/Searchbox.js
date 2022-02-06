@@ -21,13 +21,12 @@ function Searchbox({ isResult }) {
     fetchData();
     setInput("");
   };
-  const goToo = () => {
-    window.open("https://github.com/Kuro0911/hn-search");
-  };
   if (!isResult) {
     return (
       <div className="search-box">
-        <h1 onClick={() => goToo()}>HACKER NEWS SEARCH</h1>
+        <Link to={"/news"} className="head">
+          <h1>HACKER NEWS SEARCH</h1>
+        </Link>
         <div className="search">
           <div className="search-cont">
             <form>
